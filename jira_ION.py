@@ -29,7 +29,7 @@ jiraConnection = JIRA(
 # Search for existing issue
 #-------------------------------------------------------------------------------
 def searchForIssue(partNumber: str):
-    jqlString = 'project = "PEP" AND "Part Number[Short text]" ~ "%s" AND status NOT IN ("In Progress","Done") ORDER BY created DESC' % partNumber
+    jqlString = 'project = "PEP" AND "cf[11502]" ~ "%s" AND status NOT IN ("In Progress","Done") ORDER BY created DESC' % partNumber
     print('Running check for issue with part number ' + partNumber)
     #print('JQL query: ' + jqlString)
     getIssues = jiraConnection.search_issues(jqlString)
@@ -96,3 +96,5 @@ def createSingleIssue(partNumber: str, quantity: int):
 #     postMultipleIssues = jiraConnection.create_issues(field_list=issueList)
 #     print('postMultipleIssues response: ' + postMultipleIssues)
 #     return postMultipleIssues
+
+test = createSingleIssue(partNumber='200644-005_A', quantity=1)
