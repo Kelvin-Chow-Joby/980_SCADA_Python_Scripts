@@ -1,6 +1,7 @@
 import requests
 import json
 import urllib
+import sys
 
 # Jira REST Endpoint
 baseUrl = "https://jira.na.joby.aero/"
@@ -65,3 +66,9 @@ def createSingleIssue(partNumber: str, quantity: int):
             issueString = issueString + issueKey + ' '
         print(issueString)
         return
+
+
+if __name__ == "__main__":
+    print("Executing", sys.argv[0], "using arguments: p/n=", sys.argv[1], ", qty=", sys.argv[2])
+    execScript = createSingleIssue(partNumber=sys.argv[1], quantity=sys.argv[2])
+

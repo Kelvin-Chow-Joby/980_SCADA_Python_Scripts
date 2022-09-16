@@ -1,5 +1,6 @@
 #Documentation available here: https://developer.atlassian.com/server/jira/platform/jira-rest-api-examples/
 from jira import JIRA
+import sys
 
 #-------------------------------------------------------------------------------
 # SECTION: Arguments
@@ -32,7 +33,7 @@ def searchForIssue(partNumber: str):
     jqlString = 'project = "PEP" AND "cf[11502]" ~ "%s" AND status NOT IN ("In Progress","Done") ORDER BY created DESC' % partNumber
     print('Running check for issue with part number ' + partNumber)
     #print('JQL query: ' + jqlString)
-    getIssues = jiraConnection.search_issues(jqlString)
+    getIssues = jiraConnection.search_issues(jqlString, expand='true')
     return getIssues
 
 
@@ -97,4 +98,6 @@ def createSingleIssue(partNumber: str, quantity: int):
 #     print('postMultipleIssues response: ' + postMultipleIssues)
 #     return postMultipleIssues
 
-test = createSingleIssue(partNumber='200644-005_A', quantity=1)
+
+print("Executing", sys.argv[0], "using arguments: p/n=", sys.argv[1], ", qty=", sys.argv[2])
+execScript = createSingleIssue(partNumber=sys.argv[1], quantity=sys.argv[2])
