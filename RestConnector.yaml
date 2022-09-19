@@ -1,0 +1,13 @@
+psql:
+    host: rc_db
+    port: 5432
+    user: root
+    pass: 1qazxsw2
+    database: postgres
+
+ion:
+    client : '7d5aabf9-3ddb-4789-baab-a4282129796b'
+    secret : '5990249b-65ec-4351-ad32-0ebd6e58c874'
+    url : 'https://staging-api.buildwithion.com/'
+    url_auth : 'https://staging-auth.buildwithion.com/auth/realms/api-keys/protocol/openid-connect/token'
+
